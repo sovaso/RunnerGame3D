@@ -40,10 +40,10 @@ public class CityMenuFlow : MonoBehaviour
 	}
 
 	scoreCounter = Int32.Parse(scoreText.GetComponent<Text>().text);
-	if (scoreCounter > 1000){
+	if (scoreCounter > 10000 && !GameIsFinished){
 	    WinningScreen();
 	} 
-	if (scoreCounter < -10000) {
+	if (scoreCounter < -10000 && !GameIsFinished) {
 	    DeathScreen();
 	}
     }
