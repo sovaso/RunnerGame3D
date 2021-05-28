@@ -17,6 +17,8 @@ public class CityGameFlow : MonoBehaviour
     private Vector3 fullObstacleSpawn;
     public Transform GemObj;
     private Vector3 GemSpawn;
+    public Transform TireObj;
+    private Vector3 TireSpawn;
     private int randX1;
     private int randX2;
 
@@ -82,7 +84,7 @@ public class CityGameFlow : MonoBehaviour
 	nextTileSpawn.z += 2.5f;
 
 	Instantiate(tileObj, nextTileSpawn, tileObj.rotation);
-	randX2 = UnityEngine.Random.Range(0,3);
+	randX2 = UnityEngine.Random.Range(0,6);
 	if (randX2 == 0){
 	    GemSpawn = nextTileSpawn;
 	    GemSpawn.x = -0.35f;
@@ -91,6 +93,19 @@ public class CityGameFlow : MonoBehaviour
 	    GemSpawn = nextTileSpawn;
 	    GemSpawn.x = 0.35f;
 	    Instantiate(GemObj, GemSpawn, GemObj.rotation);
+	} else if (randX2 == 2){
+	    GemSpawn = nextTileSpawn;
+	    GemSpawn.y = 0.45f;
+	    GemSpawn.x = 0.35f;
+	    Instantiate(GemObj, GemSpawn, GemObj.rotation);
+	} else if (randX2 == 3){
+	    GemSpawn = nextTileSpawn;
+	    GemSpawn.y = 0.45f;
+	    GemSpawn.x = -0.35f;
+	    Instantiate(GemObj, GemSpawn, GemObj.rotation);
+	} else if (randX2 == 4){
+	    TireSpawn = nextTileSpawn;
+	    Instantiate(TireObj, TireSpawn, TireObj.rotation);
 	} else {
 	    fullObstacleSpawn = nextTileSpawn;
 	    Instantiate(fullObstacleObj, fullObstacleSpawn, fullObstacleObj.rotation);	

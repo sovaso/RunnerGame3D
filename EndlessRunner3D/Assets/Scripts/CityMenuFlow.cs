@@ -13,9 +13,12 @@ public class CityMenuFlow : MonoBehaviour
     public GameObject finishMenuUI;
     public GameObject endMenuUI;
     public GameObject deathMenuUI;
+    public GameObject progressBarMenu;
 
     public GameObject scoreText;
     int scoreCounter;
+
+    private int scoreLevelMaximum = 10000;
 
     void Start(){
 	GameIsPaused = false;
@@ -40,10 +43,10 @@ public class CityMenuFlow : MonoBehaviour
 	}
 
 	scoreCounter = Int32.Parse(scoreText.GetComponent<Text>().text);
-	if (scoreCounter > 10000 && !GameIsFinished){
+	if (scoreCounter >= scoreLevelMaximum && !GameIsFinished){
 	    WinningScreen();
 	} 
-	if (scoreCounter < -10000 && !GameIsFinished) {
+	if (scoreCounter <= -scoreLevelMaximum && !GameIsFinished) {
 	    DeathScreen();
 	}
     }
@@ -62,23 +65,19 @@ public class CityMenuFlow : MonoBehaviour
 
     public void WinningScreen(){
 	GameIsFinished = true;
-	//pauseMenuUI.SetActive(false);
 	finishMenuUI.SetActive(true);
-	//endMenuUI.SetActive(false);
 	Time.timeScale = 0f;
     }
 
     public void EndScreen(){
-	//pauseMenuUI.SetActive(false);
+	progressBarMenu.SetActive(false);
 	finishMenuUI.SetActive(false);
 	endMenuUI.SetActive(true);
     }
 
     public void DeathScreen(){
 	GameIsFinished = true;
-	//pauseMenuUI.SetActive(false);
 	deathMenuUI.SetActive(true);
-	//endMenuUI.SetActive(false);
 	Time.timeScale = 0f;
     }
 }

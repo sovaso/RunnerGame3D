@@ -14,9 +14,12 @@ public class MountainMenuFlow : MonoBehaviour
     public GameObject continueStoryMenuUI;
     public GameObject secondLevelIntroductionMenuUI;
     public GameObject deathMenuUI;
+    public GameObject progressBarMenu;
 
     public GameObject scoreText;
     int scoreCounter;
+
+    private int scoreLevelMaximum = 7000;
 
     void Start(){
 	GameIsPaused = false;
@@ -41,10 +44,10 @@ public class MountainMenuFlow : MonoBehaviour
 	}
 
 	scoreCounter = Int32.Parse(scoreText.GetComponent<Text>().text);
-	if (scoreCounter > 7000 && !GameIsFinished){
+	if (scoreCounter >= scoreLevelMaximum && !GameIsFinished){
 	    WinningScreen();
 	} 
-	if (scoreCounter < -10000 && !GameIsFinished) {
+	if (scoreCounter <= -scoreLevelMaximum && !GameIsFinished) {
 	    DeathScreen();
 	}
     }
@@ -62,20 +65,18 @@ public class MountainMenuFlow : MonoBehaviour
     }
 
     public void WinningScreen(){
-	print("Winning radi");
 	GameIsFinished = true;
 	finishMenuUI.SetActive(true);
 	Time.timeScale = 0f;
     }
 
     public void ContinueStoryScreen(){
-	print("Continue radi");
+	progressBarMenu.SetActive(false);
 	finishMenuUI.SetActive(false);
 	continueStoryMenuUI.SetActive(true);
     }
 
     public void SecondLevelIntroductionScreen(){
-	print("Second Level radi");
 	continueStoryMenuUI.SetActive(false);
 	secondLevelIntroductionMenuUI.SetActive(true);
     }
