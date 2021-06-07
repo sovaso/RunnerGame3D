@@ -12,6 +12,8 @@ public class RunningBoy : MonoBehaviour
     public GameObject scoreText;
     int scoreCounter;
 
+    public AudioSource jumpingAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class RunningBoy : MonoBehaviour
   	    this.transform.position = new Vector3(-0.55f, this.transform.position.y, this.transform.position.z);
 
 	if(Input.GetKey("space") && !midJump){
+	    jumpingAudio.Play();
 	    GetComponent<Rigidbody>().velocity = new Vector3(0,0.5f,2.5f);
 	    midJump = true;
 	    StartCoroutine(stopJump());

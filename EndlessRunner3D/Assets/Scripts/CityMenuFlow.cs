@@ -15,6 +15,8 @@ public class CityMenuFlow : MonoBehaviour
     public GameObject deathMenuUI;
     public GameObject progressBarMenu;
 
+    public AudioSource backgroundMusic2;
+
     public GameObject scoreText;
     int scoreCounter;
 
@@ -70,6 +72,7 @@ public class CityMenuFlow : MonoBehaviour
     }
 
     public void EndScreen(){
+	backgroundMusic2.Play();
 	progressBarMenu.SetActive(false);
 	finishMenuUI.SetActive(false);
 	endMenuUI.SetActive(true);

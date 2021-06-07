@@ -16,6 +16,8 @@ public class MountainMenuFlow : MonoBehaviour
     public GameObject deathMenuUI;
     public GameObject progressBarMenu;
 
+    public AudioSource backgroundMusic2;
+
     public GameObject scoreText;
     int scoreCounter;
 
@@ -73,6 +75,7 @@ public class MountainMenuFlow : MonoBehaviour
     public void ContinueStoryScreen(){
 	progressBarMenu.SetActive(false);
 	finishMenuUI.SetActive(false);
+	backgroundMusic2.Play();
 	continueStoryMenuUI.SetActive(true);
     }
 

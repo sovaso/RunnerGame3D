@@ -12,12 +12,15 @@ public class MainMenuFlow : MonoBehaviour
     public GameObject pickLevelMenuUI;
     public GameObject startOfStoryMenuUI;
     public GameObject continueOfStoryMenuUI;
-    public GameObject introductionFirstLevelMenuUI;	
+    public GameObject introductionFirstLevelMenuUI;
+
+    public AudioSource backgroundMusic1;
+    public AudioSource backgroundMusic2;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        backgroundMusic1.Play();
     }
 
     // Update is called once per frame
@@ -47,6 +50,8 @@ public class MainMenuFlow : MonoBehaviour
     }
 
     public void StartAdventureButton(){
+	backgroundMusic1.Stop();
+	backgroundMusic2.Play();
 	startingMenuUI.SetActive(false);
 	startOfStoryMenuUI.SetActive(true);
     }
