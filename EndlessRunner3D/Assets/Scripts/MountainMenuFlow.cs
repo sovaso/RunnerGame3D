@@ -17,6 +17,7 @@ public class MountainMenuFlow : MonoBehaviour
     public GameObject progressBarMenu;
 
     public AudioSource backgroundMusic2;
+    public AudioSource runningSound;
 
     public GameObject scoreText;
     int scoreCounter;
@@ -29,6 +30,8 @@ public class MountainMenuFlow : MonoBehaviour
 	Time.timeScale = 1f;
 
 	scoreCounter = Int32.Parse(scoreText.GetComponent<Text>().text);
+
+	runningSound.Play();
     }   
 
     // Update is called once per frame
@@ -55,18 +58,21 @@ public class MountainMenuFlow : MonoBehaviour
     }
 
     public void Resume(){
+	runningSound.Play();
 	pauseMenuUI.SetActive(false);
 	Time.timeScale = 1f;
 	GameIsPaused = false;
     }
 
     public void Pause(){
+	runningSound.Stop();
 	pauseMenuUI.SetActive(true);
 	Time.timeScale = 0f;
 	GameIsPaused = true;
     }
 
     public void WinningScreen(){
+	runningSound.Stop();
 	GameIsFinished = true;
 	finishMenuUI.SetActive(true);
 	Time.timeScale = 0f;
@@ -85,6 +91,7 @@ public class MountainMenuFlow : MonoBehaviour
     }
 
     public void DeathScreen(){
+	runningSound.Stop();
 	GameIsFinished = true;
 	deathMenuUI.SetActive(true);
 	Time.timeScale = 0f;

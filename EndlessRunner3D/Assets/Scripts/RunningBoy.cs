@@ -13,6 +13,7 @@ public class RunningBoy : MonoBehaviour
     int scoreCounter;
 
     public AudioSource jumpingAudio;
+    public AudioSource collectingAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,7 @@ public class RunningBoy : MonoBehaviour
 	    scoreCounter -= 50000;
 	    scoreText.GetComponent<Text>().text = scoreCounter.ToString();
 	} else if (otherObject.tag == "gem"){
+	    collectingAudio.Play();
 	    Destroy(otherObject.gameObject);
 	    scoreCounter = Int32.Parse(scoreText.GetComponent<Text>().text);
 	    scoreCounter += 250;

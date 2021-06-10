@@ -28,9 +28,11 @@ public class CityGameFlow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+	// spawning tiles (road and bulidings) constantly to make it infinite
 	nextTileSpawn.z = 20f;
         StartCoroutine(spawnTile());
 
+	// setting score to 0 on the start
 	scoreCounter = 0;
 	scoreText.GetComponent<Text>().text = scoreCounter.ToString();
     }
@@ -38,6 +40,7 @@ public class CityGameFlow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+	// if the game is not paused, update the score by each frame
 	if (Time.timeScale != 0f){
 	    scoreCounter = Int32.Parse(scoreText.GetComponent<Text>().text);
 	    scoreCounter += 1;
@@ -46,6 +49,9 @@ public class CityGameFlow : MonoBehaviour
     }
     IEnumerator spawnTile()
     {
+	/*
+	Spawning randomly obstacles together with tile (two by each second)
+	*/
 	yield return new WaitForSeconds(1);
 
 	Instantiate(tileObj, nextTileSpawn, tileObj.rotation);
